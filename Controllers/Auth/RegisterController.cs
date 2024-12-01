@@ -24,7 +24,11 @@ namespace UserApi.Controllers.Auth
                 return BadRequest(ModelState);
             }
 
-            if (await _context.Users.AnyAsync(u => u.Email == dto.Email))
+            if (dto.Password != dto.ConfirmPassword) { 
+                return BadRequest(new { message = "Las contraseñas no son iguales" });
+            }
+
+			if (await _context.Users.AnyAsync(u => u.Email == dto.Email))
             {
                 return BadRequest(new { message = "El email ya esta en uso" });
             }

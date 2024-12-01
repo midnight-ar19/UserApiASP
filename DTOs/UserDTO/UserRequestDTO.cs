@@ -15,5 +15,6 @@ namespace UserApi.DTOs.UserDTO
 		[Required(ErrorMessage = "La contraseña es obligatoria.")]
 		[StringLength(25, MinimumLength = 8, ErrorMessage = "La contraseña debe tener entre 8 y 25 caracteres.")]
 		public string Password { get; set; }
+		public string ConfirmPassword { get; set; }
 	}
 }
